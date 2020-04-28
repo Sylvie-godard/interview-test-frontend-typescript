@@ -1,46 +1,57 @@
-import React, {useState} from "react";
-import Axios from "axios";
-import Router from 'next/router';
+import React, {useEffect, useState} from 'react';
+import Axios from 'axios';
+import { useInfos } from '../components/Context';
 
 const Login: React.FC<{}> = () => {
-    const [username, setUsername] = useState(null);
-    const [password, setPassword] = useState(null);
+    const { userLogin } = useInfos();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [isLogin, setIsLogin] = useState(false);
+
+    useEffect(() => {
+        document.body.style.backgroundImage = 'url(/img/icons/sand.png), url(/img/icons/henry-chill.png), url(/img/icons/buoy.png)';
+        document.body.style.backgroundRepeat = 'no-repeat, no-repeat, no-repeat';
+        document.body.style.backgroundSize = '30rem, 20rem, 10rem';
+        document.body.style.backgroundPosition = 'left top, right bottom, left bottom';
+        document.body.style.backgroundColor = 'blue';
+    }, []);
 
     function handleSubmit(): void {
-        console.log(username, password);
         Axios.post("http://localhost:3000/api/users", {
             username,
             password
         }).then( res => {
-            if (res.status === 200) {
-                Router.push('/');
-            } else {
+            if (res.status === 200 || res.status === 400 || res.status === 405) {
+                setIsLogin(true);
             }
         });
+
+        userLogin({username, isLogin});
     }
 
     return (
-        <div className='form-login'>
-            <input type='identifiant'
-                   value={username}
-                   onChange={e => {
-                       setUsername(e.target.value);
-                   }}
-                   placeholder='Adresse e-mail'
-            />
-                   <br/>
-            <input
-                type='password'
-                value={password}
-                onChange={e => {
-                    setPassword(e.target.value);
-                }}
-                placeholder='Mot de passe'
-            />
+            <div className='form-login'>
+                <img src='/img/icons/logo.svg' alt='logo'/><br/>
+                <input type='identifiant'
+                       value={username}
+                       onChange={e => {
+                           setUsername(e.target.value);
+                       }}
+                       placeholder='Adresse e-mail'
+                />
                 <br/>
-            <button className='connexion' onClick={handleSubmit}>CONNEXION</button><br/>
-            <button className='mdp'>MOT DE PASSE OUBLIÉ</button>
-        </div>
+                <input
+                    type='password'
+                    value={password}
+                    onChange={e => {
+                        setPassword(e.target.value);
+                    }}
+                    placeholder='Mot de passe'
+                />
+                <br/>
+                <button className='connexion' onClick={handleSubmit}>CONNEXION</button><br/>
+                <button className='mdp'>MOT DE PASSE OUBLIÉ</button>
+            </div>
     );
 };
 

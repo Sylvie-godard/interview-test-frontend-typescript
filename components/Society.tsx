@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const Society: React.FC<{}> = () => {
     const body: JSX.Element = <div>
-        <p>company_company (89391277419690)</p>
+        <p><strong>company_company (89391277419690)</strong></p>
         <p>
             341 Chasity Overpass,Runolfsson Walks <br/>
             33282 Johnsmouth, France

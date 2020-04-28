@@ -6,8 +6,8 @@ export default (req, res) => {
         });
     } else if (req.method === 'POST') {
         let data = req.body;
-        console.log(data);
-        if (data.username === 'user@domain.tld' && data.password === '123456789') {
+
+        if (data.username === 'test' && data.password === 'test') {
             return res.status(200).json({ valid: true })
         } else {
             return res.status(400).json({ valid: false })

@@ -17,14 +17,14 @@ const LastActivities: React.FC<{}> = () => {
         { day: 3, month: 'AVR', text: 'Vous avez demandé la résiliation de votre assurance RC Pro Raincoat'},
     ];
 
-    const body: JSX.Element[] = activities.map(value => {
-        return <Activity day={value.day} month={value.month} text={value.text}/>
+    const body: JSX.Element[] = activities.map((value, index) => {
+        return <Activity key={index} day={value.day} month={value.month} text={value.text}/>
     });
 
     return (
         <Card
             logo='/img/icons/event.svg'
-            title='Mes dernières activité'
+            title='Mes dernières activités'
             body={ body }
         />
     )

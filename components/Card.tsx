@@ -19,7 +19,7 @@ const Card: React.FC<Props> = (
     return (
         <div className='box-society'>
             <div className='society-header'>
-                <img src={ logo } alt='user'/>
+                <img src={ logo } alt={ logo }/>
                 <h1>{ title }</h1>
             </div>
             { body }

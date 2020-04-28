@@ -1,7 +1,10 @@
 import React from "react";
 import '../style.css';
+import { AppProvider } from '../components/Context';
 
-// This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }) {
-    return <Component {...pageProps} />
+    return  <AppProvider>
+        <Component {...pageProps} />
+    </AppProvider>
+
 }
