@@ -11,9 +11,12 @@ const Title: React.FC<Props> = ({ text }) => (
         </h1>
         <style jsx>{`
       h1{
+        color: #2d84f1;
+        text-align: center;
         padding: 10px;
         margin: 10px;
-        border: 1px solid black;
+        margin-right: auto;
+        margin-left: auto;
       }
     `}</style>
     </>
