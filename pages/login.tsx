@@ -4,7 +4,7 @@ import { useInfos } from '../components/Context';
 
 const Login: React.FC<{}> = () => {
     const { userLogin } = useInfos();
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const Login: React.FC<{}> = () => {
 
     function handleSubmit() {
         Axios.post("http://localhost:3000/api/users", {
-            username,
+            email,
             password
         }).then( res => {
             if (res.status === 200) {
@@ -38,9 +38,9 @@ const Login: React.FC<{}> = () => {
             <div className='form-login'>
                 <img src='/img/icons/logo.svg' alt='logo'/><br/>
                 <input type='identifiant'
-                       value={username}
+                       value={email}
                        onChange={e => {
-                           setUsername(e.target.value);
+                           setEmail(e.target.value);
                        }}
                        placeholder='Adresse e-mail'
                 />
