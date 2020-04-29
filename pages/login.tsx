@@ -28,6 +28,12 @@ const Login: React.FC<{}> = () => {
         })
     }
 
+    function submit(event: React.KeyboardEvent){
+        if(event.key === 'Enter'){
+            handleSubmit();
+        }
+    }
+
     return (
             <div className='form-login'>
                 <img src='/img/icons/logo.svg' alt='logo'/><br/>
@@ -46,6 +52,7 @@ const Login: React.FC<{}> = () => {
                         setPassword(e.target.value);
                     }}
                     placeholder='Mot de passe'
+                    onKeyPress={submit}
                 />
                 <br/>
                 <button className='connexion' onClick={handleSubmit}>CONNEXION</button><br/>
