@@ -5,18 +5,13 @@ import Router from "next/router";
 const LocalStateContext = createContext(null);
 const LocalStateProvider = LocalStateContext.Provider;
 
-interface userData {
-    username: string;
-    isLogin: boolean;
-}
-
 const AppProvider: React.FC<{}> = ({ children }) => {
-    const [user, setUser] = useState({username: '', isLogin: false});
+    const [isLogin, setIsLogin] = useState(false);
 
-    const userLogin = (data: userData) => {
-        setUser(data);
+    const userLogin = (data: boolean) => {
+        setIsLogin(data);
 
-        if (data.isLogin) {
+        if (data) {
             Router.push('/');
             cogoToast.success('Super ! Vous êtes connecté :)');
         } else {
@@ -24,19 +19,10 @@ const AppProvider: React.FC<{}> = ({ children }) => {
         }
     };
 
-    const isLogin = () => {
-        if (user.isLogin) {
-            Router.push('/');
-        } else {
-            Router.push('/login');
-        }
-    };
-
     return (
         <LocalStateProvider
             value={{
                 userLogin,
-                user,
                 isLogin
             }}
         >

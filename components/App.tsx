@@ -10,10 +10,10 @@ import {useInfos} from "./Context";
 import Router from "next/router";
 
 const App: React.FC<{}> = () => {
-    const {user} = useInfos();
+    const {isLogin} = useInfos();
 
     useEffect(() => {
-        if (!user.isLogin) {
+        if (!isLogin) {
             Router.push('/login')
         } else {
             document.body.style.backgroundImage = 'none';
