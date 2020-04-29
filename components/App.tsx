@@ -8,12 +8,14 @@ import LastActivities from "./LastActivities";
 import NavBar from "./NavBar";
 import {useInfos} from "./Context";
 import Router from "next/router";
+import { parseCookies } from 'nookies';
 
 const App: React.FC<{}> = () => {
     const {isLogin} = useInfos();
+    const cookies = parseCookies();
 
     useEffect(() => {
-        if (!isLogin) {
+        if (!isLogin && !cookies.fromClientSide) {
             Router.push('/login')
         } else {
             document.body.style.backgroundImage = 'none';

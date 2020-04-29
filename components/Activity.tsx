@@ -16,7 +16,7 @@ const Activity: React.FC<Props> = ({ day, month, text}) => {
                 </p>
             </div>
             <div className='activity-text'>
-                { text }
+                Vous avez demandé <strong>{ text }</strong>
             </div>
         </div>
     )

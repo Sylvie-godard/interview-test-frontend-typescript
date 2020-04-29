@@ -15,7 +15,7 @@ const Login: React.FC<{}> = () => {
         document.body.style.backgroundColor = 'blue';
     }, []);
 
-    function handleSubmit() {console.log(username, password);
+    function handleSubmit() {
         Axios.post("http://localhost:3000/api/users", {
             username,
             password

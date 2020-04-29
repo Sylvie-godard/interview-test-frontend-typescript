@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext } from "react";
 import cogoToast from 'cogo-toast';
 import Router from "next/router";
+import { setCookie } from 'nookies';
 
 const LocalStateContext = createContext(null);
 const LocalStateProvider = LocalStateContext.Provider;
@@ -12,6 +13,10 @@ const AppProvider: React.FC<{}> = ({ children }) => {
         setIsLogin(data);
 
         if (data) {
+            setCookie(null, 'fromClientSide', 'isLogin', {
+                maxAge: 30 * 24 * 60 * 60,
+                path: '/',
+            });
             Router.push('/');
             cogoToast.success('Super ! Vous êtes connecté :)');
         } else {
