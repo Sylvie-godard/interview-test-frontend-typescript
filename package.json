@@ -12,7 +12,7 @@
     "@material-ui/icons": "^4.9.1",
     "@types/react-router": "^5.1.5",
     "@types/react-router-dom": "^5.1.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cogo-toast": "^4.2.3",
     "next": "9.3.3",
     "nookies": "^2.2.3",
